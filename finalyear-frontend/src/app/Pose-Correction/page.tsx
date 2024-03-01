@@ -63,29 +63,6 @@ const Card = ({ heading, description, image, href }: CardProps) => {
 
 export default function gridListWith() {
 
-  const picsnames = [
-    'Adho_Mukha_Svanasana',
-    'Adho_Mukha_Vrksasana',
-    'Alanasana',
-    'Anjaneyasana',
-    'Ardha_Chandrasana',
-    'Ardha_Matsyendrasana',
-    'Ardha_Navasana',
-    'Ardha_Pincha_Mayurasana',
-    'Ashta_Chandrasana',
-    'Baddha_Konasana',
-    'Bakasana',
-    'Balasana',
-    'Bitilasana',
-    'Camatkarasana',
-    'Dhanurasana',
-    'Eka_Pada_Rajakapotasana',
-    'Garudasana',
-    'Halasana',
-    'Hanumanasana',
-    'Malasana',
-    'Marjaryasana',
-  ];
   // Array of pose names and their descriptions
   const poses = [
     'Adho Mukha Svanasana',

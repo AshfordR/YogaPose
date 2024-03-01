@@ -1,11 +1,9 @@
 'use client'
 
 import Navbar from '@/components/navbar/Navbar';
-import { Flex, Box, SimpleGrid, Card, CardHeader, Heading, ChakraProvider, CardBody, Text, CardFooter, Button, Center, useBreakpointValue } from '@chakra-ui/react';
+import { Flex, Box, SimpleGrid, Card, CardHeader, Heading, ChakraProvider, CardBody, Text, CardFooter, Button, Center, useBreakpointValue, Image } from '@chakra-ui/react';
 
 import { extendTheme } from "@chakra-ui/react";
-import { FaUser, FaChartBar, FaListUl, FaCog } from 'react-icons/fa'; // Import your desired icons
-
 
 export default function Services() {
   const theme = extendTheme({
@@ -24,7 +22,7 @@ export default function Services() {
   return (
     <ChakraProvider theme={theme}>
       <Flex direction="column" height="100vh" margin="0" padding="0">
-        <Box bg="#CECABE" margin="0" padding="0">
+        <Box bg="#CECABE" margin="0" padding="0" backgroundImage="url('Images/common-background.jpg')" backgroundSize="cover">
           <Navbar/>
           <Box>
             <Heading
@@ -38,57 +36,34 @@ export default function Services() {
           </Box>
           <Center mt={{ base: "2rem", md: "6rem" }}>
             <SimpleGrid columns={{ base: 1, md: 4 }} spacing={4} maxW="1200px">
-        <Card p={4} m={4} boxShadow="md" borderRadius="md" borderWidth="1px">
-          <CardHeader>
-            <Heading size='md' >Pose Detection</Heading>
-          </CardHeader>
-          <CardBody>
-            <Text>View a summary of all your customers over the last month.</Text>
-          </CardBody>
-          <CardFooter>
-            <Button>View here</Button>
-          </CardFooter>
-        </Card>
-        <Card p={4} m={4} boxShadow="md" borderRadius="md" borderWidth="1px">
-          <CardHeader>
-            <Heading size='md'>Pose Correction</Heading>
-          </CardHeader>
-          <CardBody>
-            <Text>View a summary of all your customers over the last month.</Text>
-          </CardBody>
-          <CardFooter>
-            <Button>View here</Button>
-          </CardFooter>
-        </Card>
-        <Card p={4} m={4} boxShadow="md" borderRadius="md" borderWidth="1px">
-          <CardHeader>
-            <Heading size='md'>Free Lessons</Heading>
-          </CardHeader>
-          <CardBody>
-            <Text>View a summary of all your customers over the last month.</Text>
-          </CardBody>
-          <CardFooter>
-            <Button>View here</Button>
-          </CardFooter>
-        </Card>
-        <Card p={4} m={4} boxShadow="md" borderRadius="md" borderWidth="1px">
-          <CardHeader>
-            <Heading size='md'>Customer dashboard</Heading>
-          </CardHeader>
-          <CardBody>
-            <Text>View a summary of all your customers over the last month.</Text>
-          </CardBody>
-          <CardFooter>
-            <Button>View here</Button>
-          </CardFooter>
-        </Card>
-      </SimpleGrid>
-    </Center>
-    </Box>
+            <CardFlex
+  heading="Pose Detection"
+  description="View a summary of all your customers over the last month."
+  imageUrl="Images/pose_detection.jpg"
+/>
+<CardFlex
+  heading="Pose Correction"
+  description="View a summary of all your customers over the last month."
+  imageUrl="Images/pose_correction.jpg"
+/>
+<CardFlex
+  heading="Free Lessons"
+  description="View a summary of all your customers over the last month."
+  imageUrl="Images/free_lessons.jpg"
+/>
+<CardFlex
+  heading="Customer dashboard"
+  description="View a summary of all your customers over the last month."
+  imageUrl="Images/pattern-bg.jpg"
+/>
+
+            </SimpleGrid>
+          </Center>
+        </Box>
         {/* New Box for "Create an Account" */}
         <Box bg="#4D8376" p="4" flex="1" >
           <Center>
-          <Card p={4} m={4} boxShadow="md" borderRadius="md" borderWidth="1px" mt="2rem" maxW="500px">
+            <Card p={4} m={4} boxShadow="md" borderRadius="md" borderWidth="1px" mt="2rem" maxW="500px">
               <CardHeader>
                 <Heading size='md'>Create an Account</Heading>
               </CardHeader>
@@ -105,3 +80,36 @@ export default function Services() {
     </ChakraProvider>
   );
 }
+
+
+function CardFlex({ heading, description, imageUrl }: { heading: string, description: string, imageUrl: string }) {
+  return (
+    <Box
+      p={4}
+      m={4}
+      boxShadow="md"
+      borderRadius="md"
+      borderWidth="1px"
+      position="relative"
+      overflow="hidden"
+      backgroundImage={`url(${imageUrl})`}
+      backgroundSize="cover"
+    >
+      <Card borderRadius="md" borderWidth="1px" position="relative" bg="rgba(255, 255, 255, 0.8)">
+        <Center>
+          <Image src={imageUrl} alt={heading} />
+        </Center>
+        <CardHeader>
+          <Heading size='md'>{heading}</Heading>
+        </CardHeader>
+        <CardBody>
+          <Text>{description}</Text>
+        </CardBody>
+        <CardFooter>
+          <Button>View here</Button>
+        </CardFooter>
+      </Card>
+    </Box>
+  );
+}
+
