@@ -154,7 +154,7 @@ export default function gridListWith() {
               <Card
                 key={index}
                 heading={pose}
-                image={`Images/Pose-Pics/${picsnames}.jpg`} // Assuming images are named after the poses
+                image={`Images/PosePics/${pose}.jpg`} // Assuming images are named after the poses
                 description={poseDescriptions[pose]}
                 href={'#'}
               />
