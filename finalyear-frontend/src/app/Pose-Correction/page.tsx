@@ -8,7 +8,7 @@ import {
   Image,
   Stack,
   Text,
-  useColorModeValue,
+  Center
 } from '@chakra-ui/react'
 import { FaPlayCircle } from 'react-icons/fa'
 
@@ -133,7 +133,7 @@ export default function gridListWith() {
 
   return (
     <Box p={4}>
-      <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
+      <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'} paddingLeft={70}>
         <Heading fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'} color={'green'}>
           Pose Correction
         </Heading>
@@ -142,8 +142,9 @@ export default function gridListWith() {
         </Text>
       </Stack>
 
-      <Container maxW={'5xl'} mt={12}>
-        <Flex justifyContent="center">
+      <Center>
+      <Container maxW={'5xl'} mt={12} paddingLeft={70}>
+        <Flex justifyContent="center"  alignItems="center">
           <Flex flexWrap="wrap" gridGap={6}>
             {poses.map((pose, index) => (
               <Card
@@ -157,6 +158,7 @@ export default function gridListWith() {
           </Flex>
         </Flex>
       </Container>
+      </Center>
     </Box>
   )
 }
