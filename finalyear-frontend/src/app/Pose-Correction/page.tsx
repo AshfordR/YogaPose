@@ -35,9 +35,26 @@ const Card = ({ heading, description, image, href }: CardProps) => {
       p={5}
       bg="white.100" // Background color
     >
-      <Stack align={'start'} spacing={2}>
-        <Box w="100%" h="200px" overflow="hidden" borderRadius="lg">
-          <Image src={image} alt={heading} objectFit="cover" w="100%" h="100%" />
+      <Stack align={'start'} spacing={2} padding-left={2}>
+        <Box
+          w="100%"
+          h="200px"
+          overflow="hidden"
+          borderRadius="lg"
+          position="relative"
+          _hover={{
+            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+            transform: 'scale(1.02)',
+            transition: 'all 0.3s ease',
+          }}
+        >
+          <Image
+            src={image}
+            alt={heading}
+            objectFit="cover"
+            w="100%"
+            h="100%"
+          />
           <Flex
             position="absolute"
             top="50%"
@@ -58,8 +75,9 @@ const Card = ({ heading, description, image, href }: CardProps) => {
         </Box>
       </Stack>
     </Box>
-  )
-}
+  );
+};
+
 
 export default function gridListWith() {
 
