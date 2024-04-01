@@ -1,5 +1,4 @@
 'use client'
-
 import {
     Button,
     Flex,
@@ -10,7 +9,6 @@ import {
     useBreakpointValue,
   } from '@chakra-ui/react';
   import { ChangeEvent, useState } from 'react';
-  
   export default function Pose() {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
@@ -29,7 +27,6 @@ import {
     };
   
     const handleUpload = () => {
-      // Handle upload logic here
       console.log('Upload logic goes here');
     };
   
