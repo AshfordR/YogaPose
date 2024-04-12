@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/Pose-Detetion/templates/index11.tsx", "src/app/Pose-Detection/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/Pose-Detetion/templates/index11.tsx", "src/app/Pose-Detection/page.tsx", "src/app/api/login/route.js"],
   "exclude": ["node_modules"]
 }

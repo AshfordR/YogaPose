@@ -22,7 +22,7 @@ import {
 import { useState } from 'react'
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 
-export default function SignUp() {
+export default function Register() {
 const [showPassword, setShowPassword] = useState(false)
   return (
     <Box position={'relative'} >

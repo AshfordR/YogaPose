@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Montserrat_Alternates } from "next/font/google";
 import { ChakraProvider } from '@chakra-ui/react';
+import AuthProvider from "./context/authprovider";
 //import "./globals.css"
 
 const montserrat = Montserrat({ subsets: ["latin"] });
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={montserrat.className}>
         <ChakraProvider>
+        <AuthProvider>
               {children}
+          </AuthProvider>
         </ChakraProvider>
       </body>
     </html>
