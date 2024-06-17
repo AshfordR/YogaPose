@@ -76,7 +76,7 @@ export default function Navbar() {
             fontWeight={600}
             color={'white'}
             bg={'blue.400'}
-            href={'/SignIn'}
+            href={'/Login'}
             _hover={{
               bg: 'grey.300',
             }}>
@@ -89,7 +89,7 @@ export default function Navbar() {
             fontWeight={600}
             color={'white'}
             bg={'blue.400'}
-            href={'/SignUp'}
+            href={'/Register'}
             _hover={{
               bg: 'grey.300',
             }}>

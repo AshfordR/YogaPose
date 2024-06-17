@@ -1,164 +1,82 @@
-'use client'
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"
+import { Button } from "@/components/ui/button"
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
 
-import {
-  Box,
-  Container,
-  Flex,
-  Heading,
-  Image,
-  Stack,
-  Text,
-  Center
-} from '@chakra-ui/react'
-import { FaPlayCircle } from 'react-icons/fa'
-
-interface CardProps {
-  heading: string
-  description: string
-  image: string // Assuming the image prop will be a URL
-  href: string
-}
-
-interface PoseDescriptions {
-  [key: string]: string;
-}
-
-const Card = ({ heading, description, image, href }: CardProps) => {
+export default function Component() {
   return (
-    <Box
-      maxW={{ base: 'full', md: '275px' }}
-      w={'full'}
-      borderWidth="1px"
-      borderRadius="lg"
-      overflow="hidden"
-      position="relative"
-      p={5}
-      bg="white.100" // Background color
+    <div className="relative w-full min-h-screen bg-gradient-to-br from-[#1e1e1e] to-[#2c2c2c] dark:bg-gray-950">
+      <div className="absolute inset-0 bg-black/50 dark:bg-gray-950/50" />
+      <div className="relative z-10 flex h-full w-full items-center justify-center px-4 py-12 md:py-20 lg:py-24">
+        <div className="max-w-xl space-y-6 rounded-lg bg-white/10 backdrop-blur-lg p-6 shadow-lg dark:bg-gray-800/10 md:p-8 lg:p-10">
+          <div className="flex items-center justify-between">
+            <h1 className="text-2xl font-bold tracking-tight text-white md:text-3xl lg:text-4xl">
+              Yoga Pose Correction
+            </h1>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline" className="flex items-center gap-2 text-white">
+                  <SpaceIcon className="h-5 w-5" />
+                  <span>Select Pose</span>
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-64 space-y-2 p-4 bg-white/10 backdrop-blur-lg text-white">
+                <div className="text-sm font-semibold">Choose a Pose</div>
+                <Select>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select a pose" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="mountain">Mountain Pose</SelectItem>
+                    <SelectItem value="tree">Tree Pose</SelectItem>
+                    <SelectItem value="warrior">Warrior Pose</SelectItem>
+                    <SelectItem value="child">Child's Pose</SelectItem>
+                    <SelectItem value="downward-dog">Downward-Facing Dog</SelectItem>
+                  </SelectContent>
+                </Select>
+              </PopoverContent>
+            </Popover>
+          </div>
+          <div className="flex justify-center">
+            <Button
+              size="lg"
+              className="w-full max-w-[200px] bg-gradient-to-r from-[#4b6bff] to-[#9b5de5] text-white shadow-lg shadow-[#4b6bff]/50 hover:shadow-[#9b5de5]/50"
+            >
+              Upload
+            </Button>
+          </div>
+          <div className="prose text-white/80 dark:prose-invert">
+            <p>
+              Elevate your yoga practice with our cutting-edge pose correction feature. Select a pose from the
+              futuristic dropdown, then upload a photo or video of your form. Our advanced AI will analyze your
+              alignment and provide personalized feedback to help you achieve perfect technique.
+            </p>
+            <p>
+              Whether you're a seasoned yogi or just starting your journey, this innovative tool will take your practice
+              to new heights. Unlock deeper mindfulness and unparalleled performance with our state-of-the-art pose
+              correction system.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function SpaceIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
-      <Stack align={'start'} spacing={2} padding-left={2}>
-        <Box
-          w="100%"
-          h="200px"
-          overflow="hidden"
-          borderRadius="lg"
-          position="relative"
-          _hover={{
-            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
-            transform: 'scale(1.02)',
-            transition: 'all 0.3s ease',
-          }}
-        >
-          <Image
-            src={image}
-            alt={heading}
-            objectFit="cover"
-            w="100%"
-            h="100%"
-          />
-          <Flex
-            position="absolute"
-            top="50%"
-            left="50%"
-            transform="translate(-50%, -50%)"
-            color="white"
-            fontSize="4xl"
-            cursor="pointer"
-          >
-            <FaPlayCircle />
-          </Flex>
-        </Box>
-        <Box mt={2}>
-          <Heading size="md">{heading}</Heading>
-          <Text mt={1} fontSize={'sm'}>
-            {description}
-          </Text>
-        </Box>
-      </Stack>
-    </Box>
-  );
-};
-
-
-export default function gridListWith() {
-
-  // Array of pose names and their descriptions
-  const poses = [
-    'Adho Mukha Svanasana',
-    'Adho Mukha Vrksasana',
-    'Alanasana',
-    'Anjaneyasana',
-    'Ardha Chandrasana',
-    'Ardha Matsyendrasana',
-    'Ardha Navasana',
-    'Ardha Pincha Mayurasana',
-    'Ashta Chandrasana',
-    'Baddha Konasana',
-    'Bakasana',
-    'Balasana',
-    'Bitilasana',
-    'Camatkarasana',
-    'Dhanurasana',
-    'Eka Pada Rajakapotasana',
-    'Garudasana',
-    'Halasana',
-    'Hanumanasana',
-    'Malasana',
-    'Marjaryasana',
-  ];
-
-  // Array of descriptions for the poses
-  const poseDescriptions: PoseDescriptions = {
-    'Adho Mukha Svanasana': 'Downward-Facing Dog Pose: This pose is a foundational yoga posture that stretches and strengthens the entire body, particularly the arms, shoulders, back, and legs.',
-    'Adho Mukha Vrksasana': 'Handstand Pose: This advanced yoga pose involves balancing on the hands with the body fully inverted. It requires strength, balance, and focus.',
-    'Alanasana': 'High Lunge Pose: This yoga pose stretches and strengthens the legs, hips, and torso while improving balance and stability.',
-    'Anjaneyasana': 'Low Lunge Pose: This pose is a variation of the lunge that stretches the thighs, groin, and hips while also opening the chest and shoulders.',
-    'Ardha Chandrasana': 'Half Moon Pose: This standing balance pose strengthens the legs, improves coordination, and stretches the sides of the body.',
-    'Ardha Matsyendrasana': 'Half Lord of the Fishes Pose: This seated twist pose increases spinal mobility, stretches the back muscles, and improves digestion.',
-    'Ardha Navasana': 'Half Boat Pose: This core-strengthening pose targets the abdominal muscles while also engaging the legs and hip flexors.',
-    'Ardha Pincha Mayurasana': 'Dolphin Pose: This inversion pose strengthens the arms, shoulders, and core muscles while also stretching the hamstrings and calves.',
-    'Ashta Chandrasana': 'High Lunge Crescent Pose: This variation of the high lunge stretches the hips, thighs, and torso while also improving balance and stability.',
-    'Baddha Konasana': 'Bound Angle Pose: This seated pose opens the hips and groin while stretching the inner thighs and groins.',
-    'Bakasana': 'Crow Pose: This arm balance pose strengthens the arms, wrists, and core muscles while also improving balance and focus.',
-    'Balasana': 'Child\'s Pose: This resting pose stretches the back, hips, and thighs while promoting relaxation and stress relief.',
-    'Bitilasana': 'Cow Pose: This gentle backbend pose stretches the spine, chest, and abdomen while also improving spinal flexibility and mobility.',
-    'Camatkarasana': 'Wild Thing Pose: This heart-opening pose stretches the chest, shoulders, and hip flexors while also building strength and flexibility.',
-    'Dhanurasana': 'Bow Pose: This backbend pose strengthens the back muscles, improves posture, and stretches the entire front of the body.',
-    'Eka Pada Rajakapotasana': 'One-Legged King Pigeon Pose: This deep hip opener pose stretches the thighs, groins, and psoas muscles while also releasing tension in the hips and lower back.',
-    'Garudasana': 'Eagle Pose: This balance pose improves concentration, strengthens the legs and ankles, and stretches the shoulders and upper back.',
-    'Halasana': 'Plow Pose: This inversion pose stretches the spine and shoulders, calms the nervous system, and improves circulation.',
-    'Hanumanasana': 'Monkey Pose (Splits): This intense hamstring and hip opener pose stretches the legs and groin while also improving flexibility and balance.',
-    'Malasana': 'Garland Pose: This squatting pose stretches the ankles, groin, and lower back while also strengthening the legs and core muscles.',
-    'Marjaryasana': 'Cat Pose: This gentle spinal flexion pose stretches the back and neck while also improving spinal mobility and relieving tension.',
-  };
-
-  return (
-    <Box p={4}>
-      <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'} paddingLeft={70}>
-        <Heading fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'} color={'green'}>
-          Pose Correction
-        </Heading>
-        <Text color={'gray.600'} fontSize={{ base: 'sm', sm: 'lg' }}>
-          Select a Pose!!
-        </Text>
-      </Stack>
-
-      <Center>
-      <Container maxW={'5xl'} mt={12} paddingLeft={70}>
-        <Flex justifyContent="center"  alignItems="center">
-          <Flex flexWrap="wrap" gridGap={6}>
-            {poses.map((pose, index) => (
-              <Card
-                key={index}
-                heading={pose}
-                image={`Images/PosePics/${pose}.jpg`} // Assuming images are named after the poses
-                description={poseDescriptions[pose]}
-                href={'#'}
-              />
-            ))}
-          </Flex>
-        </Flex>
-      </Container>
-      </Center>
-    </Box>
+      <path d="M22 17v1c0 .5-.5 1-1 1H3c-.5 0-1-.5-1-1v-1" />
+    </svg>
   )
 }
